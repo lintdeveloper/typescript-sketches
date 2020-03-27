@@ -37,7 +37,7 @@ numbers.map(number => console.log(number)) */
 // console.log(quotient.results);
 
 //Arrow func solves the above sample 1 and 2 probs
-const quotient = {
+/*const quotient = {
     numbers: [1,2,3,4,5,6,7],
     results: [],
     divideFn: function(divisor) {
@@ -49,4 +49,14 @@ const quotient = {
     }
 }
 quotient.divideFn(3);
-console.log(quotient.results);
+console.log(quotient.results); */
+
+
+//Returning an object 
+const greet = (name, age) => ({
+    name,
+    age
+})
+
+console.log(greet("Musa", 45));
+
