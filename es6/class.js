@@ -14,7 +14,7 @@ class Car {
 
 class Truck extends Car {
     getMaxSpeed() {
-        return `Maximum truck speed is ${this.speed} km/h`
+       return super.getMaxSpeed()
     }
     getMake() {
         return `This truck is a ${this.make}`
