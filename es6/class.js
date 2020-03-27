@@ -12,6 +12,17 @@ class Car {
     }
 }
 
+class Truck extends Car {
+    getMaxSpeed() {
+        return `Maximum truck speed is ${this.speed} km/h`
+    }
+    getMake() {
+        return `This truck is a ${this.make}`
+    }
+}
+
 const car = new Car("BMW", "Blue", 250)
+const truck = new Truck("MAN", 'black', 80)
 
 console.log(car.getMaxSpeed());
+console.log(truck.getMaxSpeed());
