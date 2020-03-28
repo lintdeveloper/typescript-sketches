@@ -5,3 +5,9 @@ function error(): never {
 function fail() {
     return error()
 }
+
+function infinite(): never {
+    while (true) {
+        
+    }
+}
