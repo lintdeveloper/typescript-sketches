@@ -1,10 +1,10 @@
-type User = {
-    name: string,
-    age: number
-};
+// type User = {
+//     name: string,
+//     age: number
+// };
 
-const myUser: User = {
-    name: "John",
-    age: 45
-}
+// const myUser: User = {
+//     name: "John",
+//     age: 45
+// }
 
