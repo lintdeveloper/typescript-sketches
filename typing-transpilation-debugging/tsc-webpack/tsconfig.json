@@ -1,6 +1,10 @@
 {
     "compilerOptions": {
-        "target": "ES6"
+        "target": "ES6",
+        "outFile": "./dist/bundle.js",
+        "module": "system",
+        "inlineSources": true,
+        "inlineSourceMap": true
     },
     "include": [
         "*.ts"
