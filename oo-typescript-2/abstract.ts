@@ -1,3 +1,4 @@
+/*
 abstract class Human {
     public name: string;
     public age: number;
@@ -18,4 +19,4 @@ class Person extends Human {
 }
 
 let john = new Person("John");
-john.greet();
+john.greet(); */
