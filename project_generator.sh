@@ -2,7 +2,7 @@
 
 # initialize npm project
 
-npm init
+yarn init
 
 # initialize git project (assuming Git is installed)
 
@@ -61,11 +61,11 @@ echo "node_modules" >> .gitignore && cp .gitignore .dockerignore
 
 # install production dependencies
 
-npm i express cors express-basic-auth helmet eslint esm
+yarn add express cors express-basic-auth helmet eslint esm
 
 # install development dependencies
 
-npm i -D supertest mocha nodemon
+yarn add -D supertest mocha nodemon
 
 # generate basic eslint config
 
