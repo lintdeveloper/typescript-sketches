@@ -1,17 +1,23 @@
 import { Router } from "express";
 import { rootControllers } from "../controllers";
-const rootRouter = Router();
+import { AsyncWrapper } from "../utils";
+const rootRouter = Router();	const rootRouter = Router();
 
-// GET /v1/
-rootRouter.get("/", rootControllers.getRoot);
 
-// POST /v1/
-rootRouter.post("/", rootControllers.postRoot);
+// GET /v1/	// GET /v1/
+rootRouter.get("/", AsyncWrapper(rootControllers.getRoot));
 
-// PUT /v1/
-rootRouter.put("/", rootControllers.putRoot);
 
-// DELETE /v1/
-rootRouter.delete("/", rootControllers.deleteRoot);
+// POST /v1/	// POST /v1/
+rootRouter.post("/", AsyncWrapper(rootControllers.postRoot));
+
+
+// PUT /v1/	// PUT /v1/
+rootRouter.put("/", AsyncWrapper(rootControllers.putRoot));
+
+
+// DELETE /v1/	// DELETE /v1/
+rootRouter.delete("/", AsyncWrapper(rootControllers.deleteRoot));
+
 
 export { rootRouter };

@@ -21,7 +21,8 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-basic-auth": "^1.2.0",
-    "helmet": "^3.22.0"
+    "helmet": "^3.22.0",
+    "pm2": "^4.2.3"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

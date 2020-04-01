@@ -65,7 +65,7 @@ npm i express cors express-basic-auth helmet eslint esm
 
 # install development dependencies
 
-npm i -D supertest mocha
+npm i -D supertest mocha nodemon
 
 # generate basic eslint config
 
