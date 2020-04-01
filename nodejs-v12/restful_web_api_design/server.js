@@ -9,8 +9,8 @@ import registerMiddlewares from "./middlewares";
 
 async function main() {
   registerMiddlewares(server);
+  server.all("/")
   server.use("/v1", rootRouter);
-
   server.listen();
 }
 
