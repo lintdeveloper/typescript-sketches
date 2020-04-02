@@ -2,6 +2,9 @@ import Express, {Router} from "express";
 import cors from "cors";
 import helmet from "helmet";
 import basicAuth from "express-basic-auth";
+import {MongoDao} from "./db";
+import { fakeContacts } from "../utils";
+import { ConfigService } from "./config-service";
 
 
 export class ServerConfig {
@@ -117,7 +120,7 @@ export class ServerConfig {
     registerErrorHandlingMiddleware() {
       this.app.get("env") === "development"
         ? this.registerMiddleware(
-            ({ statusCode, message, stack }, req, res, next) => {
+            ({ statusCode = 500, message, stack }, req, res, next) => {
               res.status(statusCode);
               res.json({
                 statusCode,
@@ -133,9 +136,27 @@ export class ServerConfig {
       return this;
     }
   
-    listen() {
-      this.app.listen(this.port, () => {
-        console.log(`Listening on port: ${this.port}`);
-      });
+    async listen() {
+      const conn = await new MongoDao(
+        `mongodb+srv://${ConfigService.MONGO_USER}:${ConfigService.MONGO_PASS}@${ConfigService.MONGO_HOST}/test?retryWrites=true&w=majority`,
+        "contactsdb"
+      );
+  
+      if (conn) {
+        const collectionName = "contacts";
+  
+        // clear contacts collection
+        // conn.deleteAllDocument(collectionName);
+  
+        // populate the collection with contacts
+        conn.insertDocuments(collectionName, [...fakeContacts.values()]);
+  
+        return this.app.listen(this.port, () => {
+          console.log(`Listening on port: ${this.port}`);
+        });
+      }
+  
+      console.error("DB connection faileed");
     }
   }
+  
