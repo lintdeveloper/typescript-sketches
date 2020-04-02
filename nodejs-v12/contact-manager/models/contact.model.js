@@ -20,6 +20,10 @@ const contactSchema = new mongoose.Schema({
       link: String
     }
   ]
-});
+},
+{
+  versionKey: false
+}
+);
 
 export const Contact = mongoose.model("Contact", contactSchema);

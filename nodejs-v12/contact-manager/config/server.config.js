@@ -12,6 +12,7 @@ export class ServerConfig {
 
   constructor({ port, middlewares, routers }) {
     this.app = Express();
+    require('dotenv').config();
     this.app.set("env", ConfigService.NODE_ENV);
     this.app.set("port", port);
     this.registerCORSMiddleware()
