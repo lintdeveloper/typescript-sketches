@@ -3,7 +3,7 @@ import { ConfigService } from "../services/config.service";
 
 export const connectDb = async dbName => {
   mongoose.connect(
-    `mongodb+srv://${ConfigService.MONGO_USER}:${ConfigService.MONGO_PASS}@${ConfigService.MONGO_HOST}/${dbName}?retryWrites=true&w=majority`,
+    `mongodb+srv://MUSA:MUSA1234@cluster0-yxnkz.mongodb.net/${dbName}?retryWrites=true&w=majority`,
     {
       useUnifiedTopology: true,
       useCreateIndex: true
