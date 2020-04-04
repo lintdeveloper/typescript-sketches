@@ -2,10 +2,12 @@ import Express, { Router } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import basicAuth from "express-basic-auth";
-import { connectDb } from "./db.config";
+import morgan from "morgan";
+import DbConfig from "./db.config";
 import { ConfigService } from "../services";
 
-export class ServerConfig {
+
+export default class ServerConfig {
   #userAccounts = {
     admin: "supersecret2"
   };
@@ -18,7 +20,8 @@ export class ServerConfig {
     this.registerCORSMiddleware()
       .registerHelmetMiddleware()
       .registerBasicAuthMiddleware()
-      .registerJSONMiddleware();
+      .registerJSONMiddleware()
+      .registerMorganMiddleware();
 
     middlewares &&
       middlewares.forEach(mdlw => {
@@ -111,6 +114,14 @@ export class ServerConfig {
   }
 
   /**
+   * register Morgan middleware from request logging
+   */
+  registerMorganMiddleware(){
+    this.registerMiddleware(morgan("dev"))
+    return this;
+  }
+
+  /**
    * register the Express Error Handling middleware
    */
   registerErrorHandlingMiddleware() {
@@ -136,8 +147,9 @@ export class ServerConfig {
 
   async listen() {
     try {
-      await connectDb("contactsdb");
-
+      const dbConf = new DbConfig("contactsdb", "images");
+      await dbConf.connectDb();
+      
       this.app.listen(this.port, () => { 
         console.log(`Listening on port: ${this.port}`);
       });
