@@ -6,6 +6,6 @@
   "dependencies": {
     "@types/node": "^13.9.5",
     "@types/underscore": "^1.9.4",
-    "underscore": "^1.9.2"
+    "underscore": "^1.12.1"
   }
 }
